@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatChipsModule } from '@angular/material/chips';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -24,7 +25,8 @@ import { CommonModule } from '@angular/common';
     MatToolbarModule,
     MatBadgeModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatChipsModule
   ],
   exports: [
     MatButtonModule,
@@ -36,7 +38,8 @@ import { CommonModule } from '@angular/common';
     MatToolbarModule,
     MatBadgeModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatChipsModule
   ]
 })
 

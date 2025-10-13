@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Signal, signal } from '@angular/core';
 import { SharedMaterialModule } from '../../shared/material/shared-material.module';
 import { HeaderHomeComponent } from './header-home/header-home.component';
 import { SidebarHomeComponent } from './sidebar-home/sidebar-home.component';
 import { Item, Priority, Status } from '@app/model/item.model';
+import { CardHomeComponent } from "./card-home/card-home.component";
 
 @Component({
   selector: 'app-home',
-  imports: [SharedMaterialModule, HeaderHomeComponent, SidebarHomeComponent],
+  imports: [SharedMaterialModule, HeaderHomeComponent, SidebarHomeComponent, CardHomeComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  tasks: Item[] = [
+  tasks = signal<Item[]>([
     {
       id: '1',
       title: 'Implementar sistema de autenticação',
@@ -49,5 +50,14 @@ export class HomeComponent {
       tags: ['bug', 'crítico', 'ecommerce'],
       isActive: false
     },
-  ];
+  ]);
+
+  activeTask(id: string) {
+    this.tasks.update(tasks =>
+      tasks.map(task => ({
+        ...task,
+        isActive: task.id === id
+      }))
+    );
+  }
 }
