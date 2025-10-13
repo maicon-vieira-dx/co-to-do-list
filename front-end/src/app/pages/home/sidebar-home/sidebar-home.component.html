@@ -1,0 +1,39 @@
+<mat-drawer-container class="sidebar-home" autosize>
+  <mat-drawer #drawer class="sidebar" mode="side">
+    <mat-nav-list>
+      @for (task of tasks; track task.id) {
+        <mat-list-item [activated]="task.isActive">
+           <a matListItemTitle href="...">{{ task.title }}</a>
+           <button matIconButton matListItemMeta>
+              <mat-icon>{{ getIconStatus(task.status) }}</mat-icon>
+           </button>
+        </mat-list-item>
+      }
+      @if (showFiller) {
+        @for (task of tasks; track task.id) {
+          <mat-list-item [activated]="task.isActive">
+             <a matListItemTitle href="...">{{ task.title }}</a>
+             <button matIconButton matListItemMeta>
+                <mat-icon>{{ getIconStatus(task.status) }}</mat-icon>
+             </button>
+          </mat-list-item>
+        }
+      }
+    </mat-nav-list>
+    <button (click)="showFiller = !showFiller" matButton="elevated">
+      @if(showFiller){
+        <b>- Menos</b>
+      } @else {
+        <b>+ Mais</b>
+      }
+    </button>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <ng-content></ng-content>
+    <button type="button" (click)="drawer.toggle()">
+      Visualizar todas
+    </button>
+  </div>
+
+</mat-drawer-container>
