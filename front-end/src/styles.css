@@ -21,3 +21,7 @@ mat-icon {
 .mat-icon {
   font-family: 'Material Symbols Outlined' !important;
 }
+
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field .mdc-notched-outline__notch {
+  border-right: 0px !important;
+}
