@@ -5,5 +5,6 @@ const router = express.Router();
 const controller = new TaskController();
 
 router.get("/", controller.index);
+router.get("/:id", controller.show);
 
 export default router;

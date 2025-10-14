@@ -13,4 +13,9 @@ export class TaskAction {
         const { tasks } = await this.taskRepository.get();
         return tasks.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map((e, i) => ({ ...e, isActive: i == 0 }));
     };
+
+    getById = async(id: string) => {
+        const { tasks } = await this.taskRepository.get();
+        return tasks.find(e => e.id == id);
+    };
 }
