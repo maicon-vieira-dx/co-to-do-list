@@ -19,6 +19,10 @@ export class TaskService {
     return this.http.get<Item>(this.url + "/" + id);
   };
 
+  create(task: Item): Observable<Item> {
+    return this.http.post<Item>(this.url, task);
+  };
+
   getPriorityColor(priority: Priority): string {
     return new Map<Priority, string>([
       [Priority.LOW, "#10b981"],
