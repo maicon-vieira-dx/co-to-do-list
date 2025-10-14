@@ -1,6 +1,8 @@
-<app-header-home></app-header-home>
-<app-sidebar-home [tasks]="tasks()">
-  <div class="flex justify-center items-center">
-    <app-card-home [tasks]="tasks" (taskActive)="activeTask($event)"></app-card-home>
-  </div>
-</app-sidebar-home>
+<div class="h-screen flex flex-col">
+  <app-header-home class="h-auto"></app-header-home>
+  <app-sidebar-home [tasks]="tasks" (taskActive)="activeTask($event)" class="h-full">
+    <div class="flex justify-center items-center">
+      <app-card-home [tasks]="tasks" (taskActive)="activeTask($event)"></app-card-home>
+    </div>
+  </app-sidebar-home>
+</div>
