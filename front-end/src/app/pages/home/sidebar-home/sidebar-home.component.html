@@ -1,18 +1,18 @@
 <mat-drawer-container class="sidebar-home" autosize>
   <mat-drawer #drawer class="sidebar" mode="side">
     <mat-nav-list>
-      @for (task of tasks; track task.id) {
-        <mat-list-item [activated]="task.isActive">
-           <a matListItemTitle href="...">{{ task.title }}</a>
-           <button matIconButton matListItemMeta>
+      @for (task of tasks(); track task.id) {
+        <mat-list-item [activated]="task.isActive" (click)="activeTask(task.id); $event.stopPropagation()">
+           <p>{{ task.title }}</p>
+           <button matIconButton matListItemMeta (click)="$event.stopPropagation()">
               <mat-icon>{{ getIconStatus(task.status) }}</mat-icon>
            </button>
         </mat-list-item>
       }
       @if (showFiller) {
-        @for (task of tasks; track task.id) {
-          <mat-list-item [activated]="task.isActive">
-             <a matListItemTitle href="...">{{ task.title }}</a>
+        @for (task of tasks(); track task.id) {
+          <mat-list-item [activated]="task.isActive" (click)="activeTask(task.id)">
+             <p>{{ task.title }}</p>
              <button matIconButton matListItemMeta>
                 <mat-icon>{{ getIconStatus(task.status) }}</mat-icon>
              </button>
@@ -29,10 +29,11 @@
     </button>
   </mat-drawer>
 
-  <div class="sidenav-content">
+  <div class="sidenav-content flex flex-col justify-center items-center h-full">
     <ng-content></ng-content>
-    <button type="button" (click)="drawer.toggle()">
-      Visualizar todas
+    <button mat-stroked-button color="primary" class="mt-2" (click)="drawer.toggle()">
+      <mat-icon>@if(!drawer.opened) { visibility } @else { visibility_off }</mat-icon>
+      @if(!drawer.opened) { Visualizar } @else { Ocultar } todas
     </button>
   </div>
 
