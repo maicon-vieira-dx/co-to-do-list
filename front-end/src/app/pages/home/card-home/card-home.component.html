@@ -6,10 +6,10 @@
         <mat-icon class="absolute top-3 right-3" [style]="{ color: getPriorityColor(taskSelected()?.priority) }">bookmark</mat-icon>
         <mat-card-header >
           <mat-card-title class="!font-medium !text-2xl">{{ taskSelected()?.title }}</mat-card-title>
-          <mat-card-subtitle class="!font-light !text-gray-500 italic">{{ taskSelected()?.category }}</mat-card-subtitle>
+          <mat-card-subtitle class="!font-light !text-gray-500 italic">~ {{ taskSelected()?.category }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <h3>{{ taskSelected()?.description }}</h3>
+          <p class="text-lg">{{ taskSelected()?.description }}</p>
         </mat-card-content>
         <mat-card-footer class="example-card-footer">
           <mat-chip-set>

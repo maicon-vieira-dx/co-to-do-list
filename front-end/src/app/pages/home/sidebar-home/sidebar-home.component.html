@@ -3,7 +3,11 @@
     <mat-nav-list>
       @for (task of tasks(); track task.id) {
         <mat-list-item [activated]="task.isActive" (click)="activeTask(task.id); $event.stopPropagation()">
-           <p>{{ task.title }}</p>
+            @if(task.title.length > 40) {
+              {{ task.title.substring(0, 40) + "..." }}
+            } @else {
+              {{ task.title }}
+            }
            <button matIconButton matListItemMeta (click)="$event.stopPropagation()">
               <mat-icon>{{ getIconStatus(task.status) }}</mat-icon>
            </button>
@@ -12,7 +16,11 @@
       @if (showFiller) {
         @for (task of tasks(); track task.id) {
           <mat-list-item [activated]="task.isActive" (click)="activeTask(task.id)">
-             <p>{{ task.title }}</p>
+             @if(task.title.length > 40) {
+              {{ task.title.substring(0, 40) + "..." }}
+            } @else {
+              {{ task.title }}
+            }
              <button matIconButton matListItemMeta>
                 <mat-icon>{{ getIconStatus(task.status) }}</mat-icon>
              </button>
