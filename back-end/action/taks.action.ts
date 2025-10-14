@@ -18,4 +18,15 @@ export class TaskAction {
         const { tasks } = await this.taskRepository.get();
         return tasks.find(e => e.id == id);
     };
+
+    create = async(req: Task) => {
+        const dueDate = new Date(req.dueDate?.split('/').reverse().join('-') || new Date()).toISOString();
+        const task = {
+            ...req,
+            dueDate,
+            id: randomUUID(),
+            createdAt: new Date().toISOString()
+        }
+        await this.taskRepository.create(task);
+    };
 }

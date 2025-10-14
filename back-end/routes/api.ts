@@ -6,5 +6,6 @@ const controller = new TaskController();
 
 router.get("/", controller.index);
 router.get("/:id", controller.show);
+router.post("/", controller.store);
 
 export default router;

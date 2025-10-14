@@ -30,4 +30,20 @@ export class TaskController {
       });
     }
   };
+
+  store = async (req: Request, res: Response) => {
+    try {
+      await this.taskAction.create(req.body);
+      res.status(201).json({
+        success: true,
+        message: "Tarefa criada com sucesso",
+      });
+    } catch (error: any) {
+      return res.status(500).json({
+        sucess: false,
+        message: "Erro na criação da tarefa",
+        error: error.message,
+      });
+    }
+  };
 }

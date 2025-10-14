@@ -14,4 +14,10 @@ export class TaskRepository {
         await this.db.read();
         return this.db.data;
     };
+
+    create = async (task: Task) => {
+        await this.db.read();
+        this.db.data.tasks.push(task);
+        await this.db.write();
+    };
 }
