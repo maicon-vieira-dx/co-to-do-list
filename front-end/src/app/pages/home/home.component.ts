@@ -1,14 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { SharedMaterialModule } from '../../shared/material/shared-material.module';
 import { HeaderComponent } from '../../components/header/header.component';
-import { SidebarHomeComponent } from './sidebar-home/sidebar-home.component';
 import { Item } from '@app/model/item.model';
 import { CardHomeComponent } from "./card-home/card-home.component";
 import { TaskService } from '@app/services/task.service';
+import { SidebarComponent } from '@app/components/sidebar-home/sidebar.component';
 
 @Component({
   selector: 'app-home',
-  imports: [SharedMaterialModule, HeaderComponent, SidebarHomeComponent, CardHomeComponent],
+  imports: [SharedMaterialModule, HeaderComponent, SidebarComponent, CardHomeComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

@@ -1,16 +1,16 @@
 import { TaskService } from '@app/services/task.service';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, signal, Signal } from '@angular/core';
-import { SharedMaterialModule } from '../../../shared/material/shared-material.module';
 import { Item, Status } from '@app/model/item.model';
+import { SharedMaterialModule } from '@app/shared/material/shared-material.module';
 
 @Component({
-  selector: 'app-sidebar-home',
+  selector: 'app-sidebar',
   imports: [CommonModule, SharedMaterialModule],
-  templateUrl: './sidebar-home.component.html',
-  styleUrl: './sidebar-home.component.css'
+  templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.css'
 })
-export class SidebarHomeComponent {
+export class SidebarComponent {
   @Input() tasks: Signal<Item[]> = signal([]);
   @Output() taskActive = new EventEmitter<string>();
 
