@@ -11,9 +11,13 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  getTasks(): Observable<Item[]> {
+  get(): Observable<Item[]> {
     return this.http.get<Item[]>(this.url);
-  }
+  };
+
+  getById(id: string): Observable<Item> {
+    return this.http.get<Item>(this.url + "/" + id);
+  };
 
   getPriorityColor(priority: Priority): string {
     return new Map<Priority, string>([

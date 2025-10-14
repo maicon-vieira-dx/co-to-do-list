@@ -18,7 +18,7 @@ export class HomeComponent {
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
-    this.taskService.getTasks().subscribe({
+    this.taskService.get().subscribe({
       next: (res) => this.tasks.set(res),
       error: (err) => console.error('Erro ao carregar tarefas:', err)
     })
