@@ -29,4 +29,10 @@ export class TaskAction {
         }
         await this.taskRepository.create(task);
     };
+
+    update = async(id: string, task: Task) => {
+        const { tasks } = await this.taskRepository.get();
+        const index = tasks.findIndex(e => e.id == id);
+        index == -1 && await this.taskRepository.update(index, task);
+    };
 }

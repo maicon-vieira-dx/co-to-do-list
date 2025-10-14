@@ -20,4 +20,10 @@ export class TaskRepository {
         this.db.data.tasks.push(task);
         await this.db.write();
     };
+
+    update = async (index: number, task: Task) => {
+        await this.db.read();
+        this.db.data.tasks[index] = { ...this.db.data.tasks[index], ...task };
+        await this.db.write();
+    };
 }

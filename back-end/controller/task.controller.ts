@@ -46,4 +46,20 @@ export class TaskController {
       });
     }
   };
+
+  update = async (req: Request, res: Response) => {
+    try {
+      await this.taskAction.update(req.params.id, req.body);
+      res.status(200).json({
+        success: true,
+        message: "Tarefa editada com sucesso",
+      });
+    } catch (error: any) {
+      return res.status(500).json({
+        sucess: false,
+        message: "Erro na edição da tarefa",
+        error: error.message,
+      });
+    }
+  };
 }
