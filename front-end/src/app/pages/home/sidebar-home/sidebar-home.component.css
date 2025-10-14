@@ -2,6 +2,6 @@
 
 @layer components {
   .sidebar-home {
-    @apply !h-full;
+    @apply !h-full flex-1 min-h-0;
   }
 }
