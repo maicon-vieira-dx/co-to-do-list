@@ -1,14 +1,7 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  Input,
-  Signal,
-  computed,
-  Output,
-  EventEmitter,
-  signal,
-} from '@angular/core';
-import { Item } from '@app/model/item.model';
+import { Component, Input, Signal, computed, Output, EventEmitter, signal } from '@angular/core';
+import { Item, Priority, Status } from '@app/model/item.model';
+import { TaskService } from '@app/services/task.service';
 import { SharedMaterialModule } from '@app/shared/material/shared-material.module';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
@@ -21,6 +14,8 @@ import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 export class CardHomeComponent {
   @Input() tasks: Signal<Item[]> = signal([]);
   @Output() taskActive = new EventEmitter<string>();
+
+  constructor (private taskService: TaskService) {}
 
   private searchSubject = new Subject<string>();
 
@@ -50,5 +45,13 @@ export class CardHomeComponent {
 
   activeTask(id: string) {
     this.taskActive.emit(id);
+  }
+
+  getPriorityColor(priority: Priority = Priority.LOW): string {
+    return this.taskService.getPriorityColor(priority);
+  }
+
+  getStatusIcon(status: Status = Status.CANCELLED): string {
+    return this.taskService.getStatusIcon(status);
   }
 }
