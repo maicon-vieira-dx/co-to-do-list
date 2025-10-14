@@ -4,6 +4,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatChipsModule } from '@angular/material/chips';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -16,7 +21,12 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     MatIconModule,
     MatFormFieldModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatToolbarModule,
+    MatBadgeModule,
+    MatSidenavModule,
+    MatListModule,
+    MatChipsModule
   ],
   exports: [
     MatButtonModule,
@@ -24,7 +34,12 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     MatIconModule,
     MatFormFieldModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatToolbarModule,
+    MatBadgeModule,
+    MatSidenavModule,
+    MatListModule,
+    MatChipsModule
   ]
 })
 

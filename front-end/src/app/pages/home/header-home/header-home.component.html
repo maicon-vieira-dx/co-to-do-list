@@ -1,0 +1,30 @@
+<mat-toolbar>
+  <!-- Logo e Título -->
+  <div class="header-brand" routerLink="/" style="cursor: pointer;">
+    <mat-icon class="brand-icon">check_circle</mat-icon>
+    <span class="brand-text">To-Do-List</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <!-- Navegação -->
+  <nav class="nav-links">
+    @for(link of navLinks; track link){
+      <a mat-button [routerLink]="link.path" [class.active]="isActiveRoute(link.path)" routerLinkActive="active-link">
+        <mat-icon class="nav-icon">{{link.icon}}</mat-icon>
+        {{link.label}}
+      </a>
+    }
+  </nav>
+
+  <div class="header-info">
+    <div class="tasks-stats">
+      <div>
+        <!-- Pendentes -->
+        <mat-icon class="stat-icon pending" [matBadge]="pendingTasks" matBadgeColor="warn" matBadgePosition="above after" aria-hidden="false">schedule</mat-icon>
+        <!-- Concluídas -->
+        <mat-icon class="stat-icon pending" [matBadge]="completedTasks" matBadgeColor="warn" matBadgePosition="above after" aria-hidden="false">check_circle</mat-icon>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

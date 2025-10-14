@@ -22,4 +22,5 @@ export interface Item {
   dueDate?: Date;
   category?: string;
   tags: string[];
+  isActive: boolean;
 }

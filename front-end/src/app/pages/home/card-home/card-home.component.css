@@ -1,0 +1,14 @@
+/* .card-home {
+  max-width: 700px;
+  min-height: 300px;
+} */
+
+@layer components {
+  .card-home {
+    @apply !max-w-[700px] !min-h-[300px] flex justify-center items-start p-[2%]
+  }
+}
+
+.example-card-footer {
+  padding: 16px;
+}
