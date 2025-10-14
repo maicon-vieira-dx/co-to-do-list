@@ -23,6 +23,10 @@ export class TaskService {
     return this.http.post<Item>(this.url, task);
   };
 
+  update(task: Item): Observable<Item> {
+    return this.http.post<Item>(this.url, task);
+  };
+
   getPriorityColor(priority: Priority): string {
     return new Map<Priority, string>([
       [Priority.LOW, "#10b981"],
