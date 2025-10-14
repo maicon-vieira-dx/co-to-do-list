@@ -35,4 +35,8 @@ export class TaskAction {
         const index = tasks.findIndex(e => e.id == id);
         index == -1 && await this.taskRepository.update(index, task);
     };
+
+    delete = async(id: string) => {
+        await this.taskRepository.delete(id);
+    };
 }

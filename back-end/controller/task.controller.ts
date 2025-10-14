@@ -62,4 +62,20 @@ export class TaskController {
       });
     }
   };
+  
+  delete = async (req: Request, res: Response) => {
+    try {
+      await this.taskAction.delete(req.params.id);
+      res.status(200).json({
+        success: true,
+        message: "Tarefa deletada com sucesso",
+      });
+    } catch (error: any) {
+      return res.status(500).json({
+        sucess: false,
+        message: "Erro ao deletar tarefa",
+        error: error.message,
+      });
+    }
+  };
 }

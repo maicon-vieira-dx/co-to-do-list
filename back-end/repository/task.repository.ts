@@ -26,4 +26,10 @@ export class TaskRepository {
         this.db.data.tasks[index] = { ...this.db.data.tasks[index], ...task };
         await this.db.write();
     };
+
+    delete = async (id: string) => {
+        await this.db.read();
+        this.db.data.tasks = this.db.data.tasks.filter(e => e.id != id);
+        await this.db.write();
+    };
 }
