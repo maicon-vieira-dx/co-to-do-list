@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SharedMaterialModule } from '../../../shared/material/shared-material.module';
+import { SharedMaterialModule } from '../../shared/material/shared-material.module';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -9,12 +9,12 @@ interface NavLink {
   icon: string;
 }
 @Component({
-  selector: 'app-header-home',
+  selector: 'app-header',
   imports: [CommonModule, RouterLink, SharedMaterialModule],
-  templateUrl: './header-home.component.html',
-  styleUrl: './header-home.component.css'
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css'
 })
-export class HeaderHomeComponent {
+export class HeaderComponent {
 
   pendingTasks = 5;
   completedTasks = 12;
