@@ -27,6 +27,10 @@ export class TaskService {
     return this.http.post<Item>(this.url, task);
   };
 
+  delete(id: string): Observable<Item> {
+    return this.http.delete<Item>(this.url + "/" + id);
+  };
+
   getPriorityColor(priority: Priority): string {
     return new Map<Priority, string>([
       [Priority.LOW, "#10b981"],
