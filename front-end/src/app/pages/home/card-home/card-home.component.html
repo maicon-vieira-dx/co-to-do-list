@@ -1,9 +1,9 @@
-<mat-card class="max-w-[60vw]">
+<mat-card>
   <div class="flex !flex-row p-5 justify-center gap-2">
-    <div>
-      <mat-card class="card-home" appearance="outlined">
-        <mat-icon class="absolute top-2">{{ getStatusIcon(taskSelected()?.status) }}</mat-icon>
-        <mat-icon class="!text-end !w-full" [style]="{ color: getPriorityColor(taskSelected()?.priority) }">bookmark</mat-icon>
+    <div class="min-w-[40vw]">
+      <mat-card class="card-home" appearance="outlined" class="!h-full justify-center">
+        <mat-icon class="absolute top-3 left-3">{{ getStatusIcon(taskSelected()?.status) }}</mat-icon>
+        <mat-icon class="absolute top-3 right-3" [style]="{ color: getPriorityColor(taskSelected()?.priority) }">bookmark</mat-icon>
         <mat-card-header >
           <mat-card-title class="!font-medium !text-2xl">{{ taskSelected()?.title }}</mat-card-title>
           <mat-card-subtitle class="!font-light !text-gray-500 italic">{{ taskSelected()?.category }}</mat-card-subtitle>
@@ -20,13 +20,13 @@
         </mat-card-footer>
       </mat-card>
     </div>
-    <div>
+    <div class="flex-grow">
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Pesquisar tarefas</mat-label>
         <input matInput placeholder="Digite para pesquisar..." [value]="searchTerm()" (input)="onSearchChange($event)">
         <mat-icon matPrefix>search</mat-icon>
       </mat-form-field>
-      <mat-list role="list" class="h-9/12 !rounded-lg !border-[1px] border-white/30 m-0 !p-2 overflow-y-auto">
+      <mat-list role="list" class="!rounded-lg !border-[1px] border-white/30 m-0 !p-2 overflow-y-auto">
         <p class="text-xs text-white/60">Adicionadas recentemente: </p>
         @for(task of filteredTasks(); track task.id) {
         <mat-list-item role="listitem" class="!bg-black !border-[1px] border-white/30 !rounded-lg my-1 m-0"
