@@ -1,8 +1,9 @@
 import { TaskService } from '@app/services/task.service';
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, signal, Signal } from '@angular/core';
-import { Item, Status } from '@app/model/item.model';
+import { Component } from '@angular/core';
+import { Status } from '@app/model/item.model';
 import { SharedMaterialModule } from '@app/shared/material/shared-material.module';
+import { TaskStore } from '@app/services/store/task.store';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,16 +12,9 @@ import { SharedMaterialModule } from '@app/shared/material/shared-material.modul
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  @Input() tasks: Signal<Item[]> = signal([]);
-  @Output() taskActive = new EventEmitter<string>();
+  protected showFiller = false;
 
-  showFiller = false;
-
-  constructor (private taskservice: TaskService){}
-
-  activeTask(id: string) {
-    this.taskActive.emit(id);
-  }
+  constructor (private taskservice: TaskService, public taskStore: TaskStore){}
 
   getIconStatus(status: Status): string {
     return this.taskservice.getStatusIcon(status);

@@ -1,8 +1,8 @@
 <mat-drawer-container class="sidebar-home" autosize>
   <mat-drawer #drawer class="sidebar" mode="side">
     <mat-nav-list>
-      @for (task of tasks(); track task.id) {
-        <mat-list-item [activated]="task.isActive" (click)="activeTask(task.id); $event.stopPropagation()">
+      @for (task of taskStore.tasks(); track task.id) {
+        <mat-list-item [activated]="task.isActive" (click)="taskStore.activate(task.id); $event.stopPropagation()">
             @if(task.title.length > 40) {
               {{ task.title.substring(0, 40) + "..." }}
             } @else {
@@ -14,8 +14,8 @@
         </mat-list-item>
       }
       @if (showFiller) {
-        @for (task of tasks(); track task.id) {
-          <mat-list-item [activated]="task.isActive" (click)="activeTask(task.id)">
+        @for (task of taskStore.tasks(); track task.id) {
+          <mat-list-item [activated]="task.isActive" (click)="taskStore.activate(task.id)">
              @if(task.title.length > 40) {
               {{ task.title.substring(0, 40) + "..." }}
             } @else {
