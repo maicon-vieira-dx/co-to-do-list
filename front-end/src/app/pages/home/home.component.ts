@@ -4,7 +4,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { Item } from '@app/model/item.model';
 import { CardHomeComponent } from "./card-home/card-home.component";
 import { TaskService } from '@app/services/task.service';
-import { SidebarComponent } from '@app/components/sidebar-home/sidebar.component';
+import { SidebarComponent } from '@app/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-home',
