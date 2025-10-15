@@ -48,11 +48,11 @@ export class TaskFormComponent {
 
   createForm(): FormGroup {
     return this.fb.group({
-      title: ['', [Validators.required, Validators.maxLength(10)]],
+      title: ['', [Validators.required, Validators.maxLength(50)]],
       status: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.maxLength(255)]],
       priority: ['', [Validators.required, Validators.maxLength(20)]],
-      category: ['', [Validators.required, Validators.maxLength(15)]],
+      category: ['', [Validators.required, Validators.maxLength(50)]],
       dueDate: ['', [Validators.required, Validators.maxLength(10)]],
       tags: [[], [Validators.required]],
     });
