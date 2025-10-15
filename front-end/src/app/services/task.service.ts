@@ -1,19 +1,43 @@
-import { Injectable } from '@angular/core';
-import { Priority, Status } from '@app/model/item.model';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Item, Priority, Status } from "@app/model/item.model";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class TaskService {
-  constructor() {}
+  private url = "http://localhost:3000/api/tasks";
+
+  constructor(private http: HttpClient) { }
+
+  get(): Observable<Item[]> {
+    return this.http.get<Item[]>(this.url);
+  };
+
+  getById(id: string): Observable<Item> {
+    return this.http.get<Item>(this.url + "/" + id);
+  };
+
+  create(task: Item): Observable<Item> {
+    return this.http.post<Item>(this.url, task);
+  };
+
+  update(task: Item): Observable<Item> {
+    return this.http.post<Item>(this.url, task);
+  };
+
+  delete(id: string): Observable<Item> {
+    return this.http.delete<Item>(this.url + "/" + id);
+  };
 
   getPriorityColor(priority: Priority): string {
     return new Map<Priority, string>([
-      [Priority.LOW, '#4caf50'],
-      [Priority.MEDIUM, '#ff9800'],
-      [Priority.HIGH, '#f44336'],
-      [Priority.URGENT, '#d32f2f'],
-    ]).get(priority) || "#757575";
+      [Priority.LOW, "#10b981"],
+      [Priority.MEDIUM, "#f59e0b"],
+      [Priority.HIGH, "#f97316"],
+      [Priority.URGENT, "#dc2626"],
+    ]).get(priority) || "#9ca3af";
   }
 
   getStatusIcon(status: Status): string {

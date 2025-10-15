@@ -1,0 +1,87 @@
+<div class="min-w-[50vw] min-h-[40vh]">
+  <mat-card class="card-home" appearance="outlined" class="!h-full justify-center">
+    <mat-card-header>
+      <mat-card-title class="!font-medium !text-2xl">{{ title }}</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" errorTailor>
+      <mat-card-content>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+          <div class="col-span-1">
+            <mat-form-field appearance="outline">
+              <mat-label>Título</mat-label>
+              <input matInput #input maxlength="10" placeholder="Ex. Nougat" formControlName="title" />
+            </mat-form-field>
+          </div>
+          <div class="col-span-1">
+            <mat-form-field appearance="outline">
+              <mat-label>Prioridade</mat-label>
+              <mat-select formControlName="priority">
+                @for(priority of priorityList; track priority) {
+                <mat-option [value]="priority.value">{{ priority.name }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+          <div class="col-span-1">
+            <mat-form-field appearance="outline">
+              <mat-label>Categoria</mat-label>
+              <input matInput maxlength="15" placeholder="Ex. Trabalho" formControlName="category" />
+            </mat-form-field>
+          </div>
+          <div class="col-span-1">
+            <mat-form-field appearance="outline">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="status">
+                @for(status of statusList; track status) {
+                <mat-option [value]="status.value">{{ status.name }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+          <div class="col-span-1">
+            <mat-form-field appearance="outline">
+              <mat-label>Data de Vencimento</mat-label>
+              <input matInput maxlength="10" placeholder="DD/MM/AAAA" formControlName="dueDate" />
+            </mat-form-field>
+          </div>
+          <div class="col-span-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Tags</mat-label>
+              <mat-chip-grid #chipGrid aria-label="Tags">
+                @for (tag of tags(); track tag.id) {
+                <mat-chip-row (removed)="remove(tag.id)" [aria-description]="'press enter to edit ' + tag.name">
+                  {{tag.name}}
+                  <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+                }
+                <input matInput [placeholder]="'Tag: '+ tags().length + '/3' " formControlName="tags" [matChipInputFor]="chipGrid"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" [disabled]="tags().length == 3" />
+              </mat-chip-grid>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="col-span-1">
+            <mat-form-field appearance="outline">
+              <mat-label>Descrição</mat-label>
+              <textarea matInput maxlength="255" placeholder="Descreva a tarefa..."
+                formControlName="description"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-footer class="flex !justify-end !w-full">
+        <button mat-stroked-button color="primary" class="m-2" type="submit" mat-raised-button color="primary">
+          Enviar
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-card-footer>
+    </form>
+  </mat-card>
+</div>
