@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Signal, computed, Output, EventEmitter, signal } from '@angular/core';
-import { Item, Priority, Status } from '@app/model/item.model';
+import { Component, computed, signal } from '@angular/core';
+import { Priority, Status } from '@app/model/item.model';
+import { TaskStore } from '@app/services/store/task.store';
 import { TaskService } from '@app/services/task.service';
 import { SharedMaterialModule } from '@app/shared/material/shared-material.module';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
@@ -12,24 +13,15 @@ import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
   styleUrl: './card-home.component.css',
 })
 export class CardHomeComponent {
-  @Input() tasks: Signal<Item[]> = signal([]);
-  @Output() taskActive = new EventEmitter<string>();
-
-  constructor (private taskService: TaskService) {}
-
   private searchSubject = new Subject<string>();
+  protected readonly searchTerm = signal<string>('');
 
-  searchTerm = signal<string>('');
+  constructor (private taskService: TaskService, public taskStore: TaskStore) {}
 
   filteredTasks = computed(() => {
     const term = this.searchTerm().toLowerCase();
-    if (!term) return this.tasks();
-    return this.tasks().filter(task => task.title.toLowerCase().includes(term));
-  });
-
-  taskSelected = computed(() => {
-    const tasks = this.tasks();
-    return tasks.find((task) => task.isActive === true);
+    if (!term) return this.taskStore.tasks();
+    return this.taskStore.tasks().filter(task => task.title.toLowerCase().includes(term));
   });
 
   ngOnInit() {
@@ -41,10 +33,6 @@ export class CardHomeComponent {
   onSearchChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.searchSubject.next(input.value);
-  }
-
-  activeTask(id: string) {
-    this.taskActive.emit(id);
   }
 
   getPriorityColor(priority: Priority = Priority.LOW): string {
