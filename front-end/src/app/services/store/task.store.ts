@@ -1,6 +1,8 @@
 import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { Item } from '@app/model/item.model';
 import { TaskService } from '../task.service';
+import { firstValueFrom } from 'rxjs';
+import { ApiResponse } from '@app/shared/types/api';
 
 @Injectable({ providedIn: 'root' })
 export class TaskStore {
@@ -9,8 +11,10 @@ export class TaskStore {
   private _loaded = signal(false);
 
   tasks = computed(() => this._tasks());
-  loaded = computed(() => this._tasks());
-  taskSelected = computed(() => this._tasks().find((task) => task.isActive === true));
+  loaded = computed(() => this._loaded());
+  taskSelected = computed(() =>
+    this._tasks().find((task) => task.isActive === true)
+  );
 
   constructor() {
     effect(() => {
@@ -20,8 +24,8 @@ export class TaskStore {
     });
   }
 
-  read() {
-    if (this._loaded()) return;
+  read(force: boolean = false) {
+    if (this._loaded() && !force) return;
     this.taskService.get().subscribe({
       next: (res) => {
         this._tasks.set(res);
@@ -31,33 +35,44 @@ export class TaskStore {
         console.error('Erro ao carregar tarefas:', err);
       },
     });
-  };
+  }
 
-  create(task: Item) {
-    this.taskService.create(task).subscribe({
-      next: (res) => this._tasks.update((tasks) => [...tasks, res]),
-    });
-  };
+  async create(task: Item): Promise<ApiResponse> {
+    try {
+      const response = await firstValueFrom(this.taskService.create(task));
+      this.read(true);
+      return response;
+    } catch (error) {
+      console.error('Erro ao criar tarefa:', error);
+      throw error;
+    }
+  }
 
-  update(task: Item) {
-    this.taskService.update(task).subscribe({
-      next: (res) =>
-        this._tasks.update((tasks) =>
-          tasks.map((t) => (t.id === res.id ? res : t))
-        ),
-    });
-  };
+  async update(task: Item): Promise<ApiResponse> {
+    try {
+      const response = await firstValueFrom(this.taskService.update(task));
+      this.read(true);
+      return response;
+    } catch (error) {
+      console.error('Erro ao atualizar tarefa:', error);
+      throw error;
+    }
+  }
 
-  delete(id: string) {
-    this.taskService.delete(id).subscribe({
-      next: () =>
-        this._tasks.update((tasks) => tasks.filter((t) => t.id !== id)),
-    });
-  };
+  async delete(id: string): Promise<ApiResponse> {
+    try {
+      const response = await firstValueFrom(this.taskService.delete(id));
+      this.read(true);
+      return response;
+    } catch (error) {
+      console.error('Erro ao deletar tarefa:', error);
+      throw error;
+    }
+  }
 
   activate(id: string) {
-    this._tasks.update(tasks =>
-      tasks.map(task => ({ ...task, isActive: task.id === id }))
+    this._tasks.update((tasks) =>
+      tasks.map((task) => ({ ...task, isActive: task.id === id }))
     );
-  };
+  }
 }
