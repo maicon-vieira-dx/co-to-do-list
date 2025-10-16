@@ -3,7 +3,7 @@
     <mat-card-header>
       <mat-card-title class="!font-medium !text-2xl">{{ title }} tarefa</mat-card-title>
     </mat-card-header>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" errorTailor>
+    <form [formGroup]="form" (ngSubmit)="formSubmit()" errorTailor>
       <mat-card-content>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
           <div class="col-span-1">
@@ -53,7 +53,7 @@
               <mat-label>Tags</mat-label>
               <mat-chip-grid #chipGrid aria-label="Tags">
                 @for (tag of tags(); track tag.id) {
-                <mat-chip-row (removed)="remove(tag.id)" [aria-description]="'press enter to edit ' + tag.name">
+                <mat-chip-row (removed)="removeTag(tag.id)" [aria-description]="'press enter to edit ' + tag.name">
                   {{tag.name}}
                   <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
                     <mat-icon>cancel</mat-icon>
@@ -61,7 +61,7 @@
                 </mat-chip-row>
                 }
                 <input matInput [placeholder]="'Tag: '+ tags().length + '/3' " formControlName="tags" [matChipInputFor]="chipGrid"
-                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" [disabled]="tags().length == 3" />
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addTag($event)" [disabled]="tags().length == 3" />
               </mat-chip-grid>
             </mat-form-field>
           </div>
