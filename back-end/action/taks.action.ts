@@ -21,19 +21,15 @@ export class TaskAction {
 
     create = async(req: Task) => {
         const dueDate = new Date(req.dueDate?.split('/').reverse().join('-') || new Date()).toISOString();
-        const task = {
-            ...req,
-            dueDate,
-            id: randomUUID(),
-            createdAt: new Date().toISOString()
-        }
+        const task = { ...req, dueDate, id: randomUUID(), createdAt: new Date().toISOString() }
         await this.taskRepository.create(task);
     };
 
     update = async(id: string, task: Task) => {
         const { tasks } = await this.taskRepository.get();
+        const dueDate = new Date(task.dueDate?.split('/').reverse().join('-') || new Date()).toISOString();
         const index = tasks.findIndex(e => e.id == id);
-        index == -1 && await this.taskRepository.update(index, task);
+        index != -1 && await this.taskRepository.update(index, { ...task, dueDate });
     };
 
     delete = async(id: string) => {
