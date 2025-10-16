@@ -27,7 +27,6 @@ export class CriarComponent {
       description: ['', [Validators.required, Validators.maxLength(255)]],
       priority: ['', [Validators.required, Validators.maxLength(20)]],
       category: ['', [Validators.required, Validators.maxLength(50)]],
-      dueDate: ['', [Validators.required, Validators.maxLength(10)]],
       tags: [[], [Validators.required]],
     });
   };
