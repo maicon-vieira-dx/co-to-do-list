@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Item, Priority, Status } from "@app/model/item.model";
+import { ApiResponse } from "@app/shared/types/api";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -19,16 +20,16 @@ export class TaskService {
     return this.http.get<Item>(this.url + "/" + id);
   };
 
-  create(task: Item): Observable<Item> {
-    return this.http.post<Item>(this.url, task);
+  create(task: Item): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.url, task);
   };
 
-  update(task: Item): Observable<Item> {
-    return this.http.post<Item>(this.url, task);
+  update(task: Item): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.url, task);
   };
 
-  delete(id: string): Observable<Item> {
-    return this.http.delete<Item>(this.url + "/" + id);
+  delete(id: string): Observable<ApiResponse> {
+    return this.http.delete<ApiResponse>(this.url + "/" + id);
   };
 
   getPriorityColor(priority: Priority): string {
