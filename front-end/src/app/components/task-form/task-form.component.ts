@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, Input, Signal, signal } from '@angular/core';
+import { Component, effect, Input, signal } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { PRIORITY_LIST, STATUS_LIST } from '@app/shared/constants/task.constants';
@@ -25,6 +25,12 @@ export class TaskFormComponent {
   readonly addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
+  constructor() {
+    effect(() => {
+      this.tags().length < 3 ? this.form.get("tags")?.enable() : this.form.get("tags")?.disable();
+    })
+  };
+
   protected onInput(event: Event) {
     this.value.set((event.target as HTMLInputElement).value);
   };
@@ -45,6 +51,6 @@ export class TaskFormComponent {
     if(this.form.valid) {
       this.form.get('tags')?.setValue(this.tags().map(({ name }) => name));
       this.onSubmit();
-    }
-  }
+    };
+  };
 }

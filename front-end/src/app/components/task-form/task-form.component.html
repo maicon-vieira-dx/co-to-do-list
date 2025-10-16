@@ -61,7 +61,7 @@
                 </mat-chip-row>
                 }
                 <input matInput [placeholder]="'Tag: '+ tags().length + '/3' " formControlName="tags" [matChipInputFor]="chipGrid"
-                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addTag($event)" [disabled]="tags().length == 3" />
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addTag($event)" />
               </mat-chip-grid>
             </mat-form-field>
           </div>
