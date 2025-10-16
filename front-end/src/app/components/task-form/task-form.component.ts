@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, Input, Output, signal } from '@angular/core';
+import { Component, computed, Input, Signal, signal } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { PRIORITY_LIST, STATUS_LIST } from '@app/shared/constants/task.constants';
@@ -17,13 +17,13 @@ export class TaskFormComponent {
   @Input() title: string = "";
   @Input() form!: FormGroup;
   @Input() onSubmit!: () => void;
+  @Input() tags = signal<{ id: number; name: string }[]>([]);
 
   protected readonly value = signal('');
   protected readonly statusList = STATUS_LIST;
   protected readonly priorityList = PRIORITY_LIST;
   readonly addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  readonly tags = signal<{ id: number, name: string }[]>([]);
 
   protected onInput(event: Event) {
     this.value.set((event.target as HTMLInputElement).value);
