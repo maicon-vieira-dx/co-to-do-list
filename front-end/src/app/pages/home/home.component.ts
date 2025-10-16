@@ -1,9 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { SharedMaterialModule } from '../../shared/material/shared-material.module';
 import { HeaderComponent } from '../../components/header/header.component';
-import { Item } from '@app/model/item.model';
 import { CardHomeComponent } from "./card-home/card-home.component";
-import { TaskService } from '@app/services/task.service';
 import { SidebarComponent } from '@app/components/sidebar/sidebar.component';
 import { TaskStore } from '@app/services/store/task.store';
 
