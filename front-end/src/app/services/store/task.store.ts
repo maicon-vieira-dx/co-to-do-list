@@ -48,9 +48,9 @@ export class TaskStore {
     }
   }
 
-  async update(task: Item): Promise<ApiResponse> {
+  async update(task: Item, id: string | undefined): Promise<ApiResponse> {
     try {
-      const response = await firstValueFrom(this.taskService.update(task));
+      const response = await firstValueFrom(this.taskService.update(task, id));
       this.read(true);
       return response;
     } catch (error) {

@@ -24,8 +24,8 @@ export class TaskService {
     return this.http.post<ApiResponse>(this.url, task);
   };
 
-  update(task: Item): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.url, task);
+  update(task: Item, id: string | undefined): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(this.url + "/" + id, task);
   };
 
   delete(id: string): Observable<ApiResponse> {
