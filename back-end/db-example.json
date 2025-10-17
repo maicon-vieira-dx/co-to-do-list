@@ -7,9 +7,9 @@
       "status": "in_progress",
       "priority": "high",
       "createdAt": "2024-01-15T10:30:00Z",
+      "updatedAt": "2024-01-20T14:25:00Z",
       "category": "Desenvolvimento",
-      "tags": ["backend", "segurança", "api"],
-      "isActive": true
+      "tags": ["backend", "segurança", "api"]
     },
     {
       "id": "b2c3d4e5-f6g7-8901-bcde-f23456789012",
@@ -18,9 +18,9 @@
       "status": "pending",
       "priority": "medium",
       "createdAt": "2024-01-16T14:20:00Z",
+      "updatedAt": "2024-01-19T09:15:00Z",
       "category": "Documentação",
-      "tags": ["docs", "technical"],
-      "isActive": true
+      "tags": ["docs", "technical"]
     },
     {
       "id": "c3d4e5f6-g7h8-9012-cdef-345678901234",
@@ -29,6 +29,7 @@
       "status": "completed",
       "priority": "urgent",
       "createdAt": "2024-01-10T09:15:00Z",
+      "updatedAt": "2024-01-12T16:40:00Z",
       "category": "Bug Fix",
       "tags": ["frontend", "ecommerce", "critical"],
       "isActive": false
@@ -40,9 +41,9 @@
       "status": "pending",
       "priority": "low",
       "createdAt": "2024-01-17T16:45:00Z",
+      "updatedAt": "2024-01-18T11:20:00Z",
       "category": "Manutenção",
-      "tags": ["dependencies", "security"],
-      "isActive": true
+      "tags": ["dependencies", "security"]
     },
     {
       "id": "e5f6g7h8-i9j0-1234-efgh-567890123456",
@@ -51,9 +52,9 @@
       "status": "in_progress",
       "priority": "medium",
       "createdAt": "2024-01-18T11:00:00Z",
+      "updatedAt": "2024-01-20T10:30:00Z",
       "category": "Relatórios",
-      "tags": ["analytics", "kpi", "business"],
-      "isActive": true
+      "tags": ["analytics", "kpi", "business"]
     },
     {
       "id": "f6g7h8i9-j0k1-2345-fghi-678901234567",
@@ -62,6 +63,7 @@
       "status": "cancelled",
       "priority": "high",
       "createdAt": "2024-01-12T08:30:00Z",
+      "updatedAt": "2024-01-15T13:10:00Z",
       "category": "Infraestrutura",
       "tags": ["migration", "servers", "downtime"],
       "isActive": false
@@ -73,9 +75,9 @@
       "status": "completed",
       "priority": "high",
       "createdAt": "2024-01-14T13:20:00Z",
+      "updatedAt": "2024-01-16T15:45:00Z",
       "category": "Otimização",
-      "tags": ["database", "performance", "sql"],
-      "isActive": true
+      "tags": ["database", "performance", "sql"]
     },
     {
       "id": "h8i9j0k1-l2m3-4567-hijk-890123456789",
@@ -84,9 +86,9 @@
       "status": "pending",
       "priority": "medium",
       "createdAt": "2024-01-19T15:10:00Z",
+      "updatedAt": "2024-01-20T08:45:00Z",
       "category": "Testes",
-      "tags": ["testing", "quality", "jest"],
-      "isActive": true
+      "tags": ["testing", "quality", "jest"]
     },
     {
       "id": "i9j0k1l2-m3n4-5678-ijkl-901234567890",
@@ -95,9 +97,9 @@
       "status": "in_progress",
       "priority": "urgent",
       "createdAt": "2024-01-13T12:00:00Z",
+      "updatedAt": "2024-01-20T16:15:00Z",
       "category": "DevOps",
-      "tags": ["ci/cd", "automation", "deploy"],
-      "isActive": true
+      "tags": ["ci/cd", "automation", "deploy"]
     },
     {
       "id": "j0k1l2m3-n4o5-6789-jklm-012345678901",
@@ -106,9 +108,9 @@
       "status": "completed",
       "priority": "low",
       "createdAt": "2024-01-11T17:30:00Z",
+      "updatedAt": "2024-01-14T14:20:00Z",
       "category": "Refatoração",
-      "tags": ["clean-code", "maintenance"],
-      "isActive": true
+      "tags": ["clean-code", "maintenance"]
     }
   ]
 }

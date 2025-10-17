@@ -1,4 +1,4 @@
-import { Priority, Status } from "@app/model/item.model";
+import { Priority, Status } from "@app/model/task.model";
 
 export const STATUS_LIST = [
   { name: 'Pendente', value: Status.PENDING },

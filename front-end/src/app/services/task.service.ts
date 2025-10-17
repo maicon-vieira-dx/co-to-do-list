@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Item, Priority, Status } from "@app/model/item.model";
+import { Task, Priority, Status } from "@app/model/task.model";
 import { ApiResponse } from "@app/shared/types/api";
 import { Observable } from "rxjs";
 
@@ -12,19 +12,19 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<Item[]> {
-    return this.http.get<Item[]>(this.url);
+  get(): Observable<Task[]> {
+    return this.http.get<Task[]>(this.url);
   };
 
-  getById(id: string): Observable<Item> {
-    return this.http.get<Item>(this.url + "/" + id);
+  getById(id: string): Observable<Task> {
+    return this.http.get<Task>(this.url + "/" + id);
   };
 
-  create(task: Item): Observable<ApiResponse> {
+  create(task: Task): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.url, task);
   };
 
-  update(task: Item, id: string | undefined): Observable<ApiResponse> {
+  update(task: Task, id: string | undefined): Observable<ApiResponse> {
     return this.http.put<ApiResponse>(this.url + "/" + id, task);
   };
 

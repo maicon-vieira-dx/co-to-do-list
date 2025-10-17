@@ -1,6 +1,4 @@
 import z from "zod";
-import { Priority } from "../models/task.model";
-
 
 export const TaskSchema = z.object({
   title: z.string()

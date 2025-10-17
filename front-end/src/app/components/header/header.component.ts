@@ -3,7 +3,7 @@ import { SharedMaterialModule } from '../../shared/material/shared-material.modu
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TaskStore } from '@app/services/store/task.store';
-import { Status } from '@app/model/item.model';
+import { Status } from '@app/model/task.model';
 
 type NavLink = {
   path: string;
