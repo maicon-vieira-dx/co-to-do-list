@@ -1,7 +1,7 @@
 import { TaskService } from '@app/services/task.service';
 import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
-import { Status } from '@app/model/item.model';
+import { Status } from '@app/model/task.model';
 import { SharedMaterialModule } from '@app/shared/material/shared-material.module';
 import { TaskStore } from '@app/services/store/task.store';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';

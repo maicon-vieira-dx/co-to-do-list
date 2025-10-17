@@ -12,13 +12,14 @@ export enum Status {
   CANCELLED = 'cancelled'
 }
 
-export interface Item {
+export interface Task {
   id: string;
   title: string;
   description?: string;
   status: Status;
   priority: Priority;
-  createdAt: Date;
+  createdAt: string;
+  updatedAt: string;
   category?: string;
   tags: string[];
   isActive: boolean;

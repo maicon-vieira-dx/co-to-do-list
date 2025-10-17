@@ -1,5 +1,5 @@
 import { computed, effect, inject, Injectable, signal } from '@angular/core';
-import { Item } from '@app/model/item.model';
+import { Task } from '@app/model/task.model';
 import { TaskService } from '../task.service';
 import { firstValueFrom } from 'rxjs';
 import { ApiResponse } from '@app/shared/types/api';
@@ -7,7 +7,7 @@ import { ApiResponse } from '@app/shared/types/api';
 @Injectable({ providedIn: 'root' })
 export class TaskStore {
   private taskService = inject(TaskService);
-  private _tasks = signal<Item[]>([]);
+  private _tasks = signal<Task[]>([]);
   private _loaded = signal(false);
 
   tasks = computed(() => this._tasks());
@@ -37,7 +37,7 @@ export class TaskStore {
     });
   }
 
-  async create(task: Item): Promise<ApiResponse> {
+  async create(task: Task): Promise<ApiResponse> {
     try {
       const response = await firstValueFrom(this.taskService.create(task));
       this.read(true);
@@ -48,7 +48,7 @@ export class TaskStore {
     }
   }
 
-  async update(task: Item, id: string | undefined): Promise<ApiResponse> {
+  async update(task: Task, id: string | undefined): Promise<ApiResponse> {
     try {
       const response = await firstValueFrom(this.taskService.update(task, id));
       this.read(true);
