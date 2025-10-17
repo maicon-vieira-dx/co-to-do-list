@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.1.2
+
+[compare changes](https://github.com/maicon-vieira-dx/co-to-do-list/compare/v1.1.0...v1.1.2)
+
+### 🩹 Fixes
+
+- Corrigindo valores de tags ([7cee6d3](https://github.com/maicon-vieira-dx/co-to-do-list/commit/7cee6d3))
+
+### ❤️ Contributors
+
+- AKRKPROMOTORA\maicon.costa <maicon.costa@tecksolucoes.com.br>
 
 ## v1.1.0
 
