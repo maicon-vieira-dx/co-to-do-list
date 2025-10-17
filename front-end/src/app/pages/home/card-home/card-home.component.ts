@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { Priority, Status } from '@app/model/item.model';
+import { Priority, Status } from '@app/model/task.model';
 import { TaskStore } from '@app/services/store/task.store';
 import { TaskService } from '@app/services/task.service';
 import { SharedMaterialModule } from '@app/shared/material/shared-material.module';
