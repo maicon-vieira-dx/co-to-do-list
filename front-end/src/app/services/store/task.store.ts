@@ -59,7 +59,7 @@ export class TaskStore {
     }
   }
 
-  async delete(id: string): Promise<ApiResponse> {
+  async delete(id: string | undefined): Promise<ApiResponse> {
     try {
       const response = await firstValueFrom(this.taskService.delete(id));
       this.read(true);

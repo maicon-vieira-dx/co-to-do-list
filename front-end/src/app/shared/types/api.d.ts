@@ -1,4 +1,8 @@
 export interface ApiResponse {
   success: boolean,
-  message: string
+  message: string,
+  errors?: {
+    path: string;
+    message: string;
+  }[];
 }

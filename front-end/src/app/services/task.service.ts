@@ -28,7 +28,7 @@ export class TaskService {
     return this.http.put<ApiResponse>(this.url + "/" + id, task);
   };
 
-  delete(id: string): Observable<ApiResponse> {
+  delete(id: string | undefined): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(this.url + "/" + id);
   };
 
