@@ -82,6 +82,39 @@ A documentação oficial com todos os endpoints está disponível [CLIQUE AQUI](
 
 ---
 
+# 💾 Criação do Banco de Dados Local
+
+O projeto utiliza o Lowdb como banco de dados local — um banco leve baseado em arquivo JSON.
+Para iniciar o banco de dados corretamente, siga os passos abaixo:
+
+**Passo a passo:**
+- No diretório do back-end, existe um arquivo chamado: ```db-example.json```
+- Renomeie o arquivo db-example.json para db.json antes de rodar o servidor
+
+## 🗂 Estrutura esperada do arquivo db.json
+
+Após a renomeação, o arquivo deve conter algo semelhante a isto:
+
+```json
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Exemplo de Tarefa",
+      "description": "Esta é uma tarefa inicial de exemplo.",
+      "status": "pending",
+      "priority": "medium",
+      "createdAt": "2025-01-01T12:00:00.000Z",
+      "category": "Pessoal",
+      "tags": ["importante"],
+      "isActive": true
+    }
+  ]
+}
+```
+
+---
+
 # 🚀 Comandos de Instalação e Execução
 
 ## 📋 Pré-requisitos
