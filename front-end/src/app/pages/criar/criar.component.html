@@ -2,7 +2,7 @@
   <app-header class="h-auto"></app-header>
   <app-sidebar class="h-full">
     <div class="flex justify-center items-center">
-      <app-task-form title="Criar tarefa"></app-task-form>
+      <app-task-form title="Criar" [form]="form" [errors]="errors()" [onSubmit]="onSubmit.bind(this)"></app-task-form>
     </div>
   </app-sidebar>
 </div>

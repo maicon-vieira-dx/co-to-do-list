@@ -19,7 +19,6 @@ export interface Task {
   status: Status;
   priority: Priority;
   createdAt: string;
-  dueDate?: string;
   category?: string;
   tags?: string[];
   isActive: boolean;
