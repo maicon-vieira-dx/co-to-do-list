@@ -1,3 +1,12 @@
+@import "tailwindcss";
+
+@layer components {
+  .mat-icon {
+    @apply !mt-1
+  }
+}
+
+
 .header-toolbar {
   padding: 0 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

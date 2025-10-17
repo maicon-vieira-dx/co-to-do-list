@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import 'ngx-toastr/toastr';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -15,6 +16,7 @@ mat-icon {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+  transform: scale(1.3);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -24,4 +26,27 @@ mat-icon {
 
 .mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field .mdc-notched-outline__notch {
   border-right: 0px !important;
+}
+
+
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--mat-sys-primary) transparent !important;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px !important;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: blue !important;
+  border-radius: 20px !important;
+  border: 3px solid orange !important;
 }
