@@ -9,35 +9,8 @@
           <div class="col-span-1">
             <mat-form-field appearance="outline">
               <mat-label>Título</mat-label>
-              <input matInput #input placeholder="Ex. Nougat" formControlName="title" />
-            </mat-form-field>
-          </div>
-          <div class="col-span-1">
-            <mat-form-field appearance="outline">
-              <mat-label>Prioridade</mat-label>
-              <mat-select formControlName="priority">
-                @for(priority of priorityList; track priority) {
-                <mat-option [value]="priority.value">{{ priority.name }}</mat-option>
-                }
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
-          <div class="col-span-1">
-            <mat-form-field appearance="outline">
-              <mat-label>Categoria</mat-label>
-              <input matInput placeholder="Ex. Trabalho" formControlName="category" />
-            </mat-form-field>
-          </div>
-          <div class="col-span-1">
-            <mat-form-field appearance="outline">
-              <mat-label>Status</mat-label>
-              <mat-select formControlName="status">
-                @for(status of statusList; track status) {
-                <mat-option [value]="status.value">{{ status.name }}</mat-option>
-                }
-              </mat-select>
+              <input matInput #input formControlName="title" />
+              <mat-error>{{ getError("title") }}</mat-error>
             </mat-form-field>
           </div>
           <div class="col-span-1">
@@ -48,13 +21,46 @@
                 <mat-chip-row (removed)="removeTag(tag.id)" [aria-description]="'press enter to edit ' + tag.name">
                   {{tag.name}}
                   <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
-                    <mat-icon>cancel</mat-icon>
+                    <mat-icon matSuffix>cancel</mat-icon>
                   </button>
                 </mat-chip-row>
                 }
-                <input matInput [placeholder]="'Tag: '+ tags().length + '/3' " formControlName="tags" [matChipInputFor]="chipGrid"
-                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addTag($event)" />
+                <input matInput [placeholder]="'Tag: '+ tags().length + '/3' " formControlName="tags"
+                  [matChipInputFor]="chipGrid" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addTag($event)" />
+                  <mat-error>{{ getError("tags") }}</mat-error>
               </mat-chip-grid>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+          <div class="col-span-1">
+            <mat-form-field appearance="outline">
+              <mat-label>Categoria</mat-label>
+              <input matInput formControlName="category" />
+              <mat-error>{{ getError("category") }}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-span-1">
+            <mat-form-field appearance="outline">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="status">
+                @for(status of statusList; track status) {
+                <mat-option [value]="status.value">{{ status.name }}</mat-option>
+                }
+              </mat-select>
+              <mat-error>{{ getError("status") }}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-span-1">
+            <mat-form-field appearance="outline">
+              <mat-label>Prioridade</mat-label>
+              <mat-select formControlName="priority">
+                @for(priority of priorityList; track priority) {
+                <mat-option [value]="priority.value">{{ priority.name }}</mat-option>
+                }
+              </mat-select>
+              <mat-error>{{ getError("priority") }}</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -64,14 +70,26 @@
               <mat-label>Descrição</mat-label>
               <textarea matInput maxlength="255" placeholder="Descreva a tarefa..."
                 formControlName="description"></textarea>
+                <mat-error>{{ getError("description") }}</mat-error>
             </mat-form-field>
           </div>
         </div>
       </mat-card-content>
       <mat-card-footer class="flex !justify-end !w-full">
-        <button mat-stroked-button color="primary" class="m-2" type="submit" mat-raised-button color="primary">
+        @if(canDelete) {
+          <button mat-stroked-button class="m-2 !text-red-500" type="button" (click)="onDelete?.()" mat-raised-button>
+            Deletar
+            <mat-icon class="mat-icon-after">close</mat-icon>
+          </button>
+        } @else {
+          <button mat-stroked-button class="m-2 !text-orange-500" type="button" (click)="clean()" mat-raised-button>
+            Limpar
+            <mat-icon matSuffix>mop</mat-icon>
+          </button>
+        }
+        <button mat-stroked-button color="primary" class="m-2 !font-semibold" type="submit" mat-raised-button color="primary">
           {{ title }}
-          <mat-icon>add</mat-icon>
+          <mat-icon matSuffix>add</mat-icon>
         </button>
       </mat-card-footer>
     </form>

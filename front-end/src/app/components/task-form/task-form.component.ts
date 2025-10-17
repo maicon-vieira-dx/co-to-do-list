@@ -6,6 +6,7 @@ import { PRIORITY_LIST, STATUS_LIST } from '@app/shared/constants/task.constants
 import { SharedMaterialModule } from '@app/shared/material/shared-material.module';
 import {COMMA, ENTER } from '@angular/cdk/keycodes';
 import { errorTailorImports } from '@ngneat/error-tailor';
+import { ApiResponse } from '@app/shared/types/api';
 
 @Component({
   selector: 'app-task-form',
@@ -16,7 +17,10 @@ import { errorTailorImports } from '@ngneat/error-tailor';
 export class TaskFormComponent {
   @Input() title: string = "";
   @Input() form!: FormGroup;
+  @Input() canDelete: boolean = false;
+  @Input() errors: ApiResponse["errors"] = [];
   @Input() onSubmit!: () => void;
+  @Input() onDelete?: () => void;
   @Input() tags = signal<{ id: number; name: string }[]>([]);
 
   protected readonly value = signal('');
@@ -43,9 +47,18 @@ export class TaskFormComponent {
     event.chipInput!.clear();
   };
 
+  protected clean() {
+    this.form.reset();
+    this.tags.set([]);
+  };
+
   protected removeTag(id: number) {
     this.tags.update(tags => tags.filter(e => e.id != id));
   };
+
+  protected getError(path: string): string | undefined {
+    return this.errors?.find(e => e.path == path)?.message;
+  }
 
   protected formSubmit() {
     if(this.form.valid) {
