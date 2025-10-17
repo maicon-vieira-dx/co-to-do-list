@@ -1,9 +1,12 @@
 # Changelog
 
+## v1.0.1
 
-## v1.1.0
+[compare changes](https://github.com/maicon-vieira-dx/co-to-do-list/compare/v1.1.0-10-g9cea0bb55c45e14aeebccda8990d8f8163cec1ea...v1.0.1)
 
-[compare changes](https://github.com/maicon-vieira-dx/co-to-do-list/compare/0.0.1...v1.1.0)
+## v1.0.0
+
+[compare changes](https://github.com/maicon-vieira-dx/co-to-do-list/compare/0.0.1...v1.0.0)
 
 ### 🚀 Enhancements
 
