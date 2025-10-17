@@ -12,7 +12,7 @@ export class TaskAction {
     get = async() => {
         const { tasks } = await this.taskRepository.get();
         if(!tasks.length) throw new Error("Nenhuma tarefa encontrada");
-        return tasks.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map((e, i) => ({ ...e, isActive: i == 0 }));
+        return tasks.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()).map((e, i) => ({ ...e, isActive: i == 0 }));
     };
 
     getById = async(id: string) => {
@@ -22,7 +22,7 @@ export class TaskAction {
     };
 
     create = async(req: Task) => {
-        const task = { ...req, id: randomUUID(), createdAt: new Date().toISOString() }
+        const task = { ...req, id: randomUUID(), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() }
         await this.taskRepository.create(task);
     };
 
@@ -30,7 +30,7 @@ export class TaskAction {
         const { tasks } = await this.taskRepository.get();
         const index = tasks.findIndex(e => e.id == id);
         if(index === -1) throw new Error("Tarefa não encontrada");
-        await this.taskRepository.update(index, task);
+        await this.taskRepository.update(index, {...task, updatedAt: new Date().toISOString() });
     };
 
     delete = async(id: string) => {
