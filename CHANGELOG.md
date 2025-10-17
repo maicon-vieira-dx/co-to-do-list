@@ -3,6 +3,28 @@
 
 ## v1.1.0
 
+[compare changes](https://github.com/maicon-vieira-dx/co-to-do-list/compare/v1.0.0...v1.1.0)
+
+### 🚀 Enhancements
+
+- Adicionando novas validações ([de30c46](https://github.com/maicon-vieira-dx/co-to-do-list/commit/de30c46))
+- Alterando a lógica para updatedAt ([70f617b](https://github.com/maicon-vieira-dx/co-to-do-list/commit/70f617b))
+
+### 🩹 Fixes
+
+- Corrigindo database e instruções do readme ([689d3ed](https://github.com/maicon-vieira-dx/co-to-do-list/commit/689d3ed))
+
+### 🏡 Chore
+
+- Alterando tipagem ([a50815c](https://github.com/maicon-vieira-dx/co-to-do-list/commit/a50815c))
+- **release:** V1.0.1 ([f25cf9c](https://github.com/maicon-vieira-dx/co-to-do-list/commit/f25cf9c))
+
+### ❤️ Contributors
+
+- AKRKPROMOTORA\maicon.costa <maicon.costa@tecksolucoes.com.br>
+
+## v1.1.0
+
 [compare changes](https://github.com/maicon-vieira-dx/co-to-do-list/compare/0.0.1...v1.1.0)
 
 ### 🚀 Enhancements
