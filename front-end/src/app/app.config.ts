@@ -5,6 +5,8 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { MaterialErrorComponent } from './components/material-error/material-error.component';
+import { provideToastr } from 'ngx-toastr';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,10 +20,17 @@ export const appConfig: ApplicationConfig = {
           required: () => 'Campo obrigatório',
           maxlength: ({ requiredLength, actualLength }) =>
             `Máximo ${requiredLength} caracteres (${actualLength} usados)`,
-          invalidAddress: (error) => `Address isn't valid`,
+          minlength: ({ requiredLength, actualLength }) =>
+            `Mínimo ${requiredLength} caracteres (${actualLength} usados)`,
         },
       },
       controlErrorComponent: MaterialErrorComponent
     }),
+    provideAnimationsAsync(),
+    provideToastr({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
   ],
 };

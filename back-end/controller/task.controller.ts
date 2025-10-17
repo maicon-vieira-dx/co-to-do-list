@@ -11,7 +11,7 @@ export class TaskController {
     try {
       return res.json(await this.taskAction.get());
     } catch (error: any) {
-      return res.status(500).json({
+      return res.status(400).json({
         sucess: false,
         message: "Erro ao listar tarefas",
         error: error.message,
@@ -23,7 +23,7 @@ export class TaskController {
     try {
       return res.json(await this.taskAction.getById(req.params.id));
     } catch (error: any) {
-      return res.status(500).json({
+      return res.status(400).json({
         sucess: false,
         message: "Erro ao listar tarefa",
         error: error.message,
@@ -39,7 +39,7 @@ export class TaskController {
         message: "Tarefa criada com sucesso",
       });
     } catch (error: any) {
-      return res.status(500).json({
+      return res.status(400).json({
         sucess: false,
         message: "Erro na criação da tarefa",
         error: error.message,
@@ -55,7 +55,7 @@ export class TaskController {
         message: "Tarefa editada com sucesso",
       });
     } catch (error: any) {
-      return res.status(500).json({
+      return res.status(400).json({
         sucess: false,
         message: "Erro na edição da tarefa",
         error: error.message,
@@ -71,7 +71,7 @@ export class TaskController {
         message: "Tarefa deletada com sucesso",
       });
     } catch (error: any) {
-      return res.status(500).json({
+      return res.status(400).json({
         sucess: false,
         message: "Erro ao deletar tarefa",
         error: error.message,
