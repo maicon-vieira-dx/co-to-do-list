@@ -62,7 +62,7 @@ export class TaskFormComponent {
 
   protected formSubmit() {
     if(this.form.valid) {
-      this.form.get('tags')?.setValue(this.tags().map(({ name }) => name));
+      this.form.get('tags')?.setValue(this.tags().map(({ name }) => name) || []);
       this.onSubmit();
     };
   };
