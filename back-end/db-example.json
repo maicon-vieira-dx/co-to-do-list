@@ -1,1 +1,114 @@
-{}
+{
+  "tasks": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "title": "Implementar sistema de autenticação",
+      "description": "Criar login e registro de usuários com JWT",
+      "status": "in_progress",
+      "priority": "high",
+      "createdAt": "2024-01-15T10:30:00Z",
+      "category": "Desenvolvimento",
+      "tags": ["backend", "segurança", "api"],
+      "isActive": true
+    },
+    {
+      "id": "b2c3d4e5-f6g7-8901-bcde-f23456789012",
+      "title": "Revisar documentação do projeto",
+      "description": "Atualizar a documentação técnica para a versão 2.0",
+      "status": "pending",
+      "priority": "medium",
+      "createdAt": "2024-01-16T14:20:00Z",
+      "category": "Documentação",
+      "tags": ["docs", "technical"],
+      "isActive": true
+    },
+    {
+      "id": "c3d4e5f6-g7h8-9012-cdef-345678901234",
+      "title": "Corrigir bug no carrinho de compras",
+      "description": "Produtos não estão sendo adicionados corretamente ao carrinho",
+      "status": "completed",
+      "priority": "urgent",
+      "createdAt": "2024-01-10T09:15:00Z",
+      "category": "Bug Fix",
+      "tags": ["frontend", "ecommerce", "critical"],
+      "isActive": false
+    },
+    {
+      "id": "d4e5f6g7-h8i9-0123-defg-456789012345",
+      "title": "Atualizar dependências do projeto",
+      "description": "Atualizar todas as bibliotecas para as versões mais recentes",
+      "status": "pending",
+      "priority": "low",
+      "createdAt": "2024-01-17T16:45:00Z",
+      "category": "Manutenção",
+      "tags": ["dependencies", "security"],
+      "isActive": true
+    },
+    {
+      "id": "e5f6g7h8-i9j0-1234-efgh-567890123456",
+      "title": "Criar relatório mensal de métricas",
+      "description": "Gerar relatório com KPIs do último mês",
+      "status": "in_progress",
+      "priority": "medium",
+      "createdAt": "2024-01-18T11:00:00Z",
+      "category": "Relatórios",
+      "tags": ["analytics", "kpi", "business"],
+      "isActive": true
+    },
+    {
+      "id": "f6g7h8i9-j0k1-2345-fghi-678901234567",
+      "title": "Migrar servidor de produção",
+      "description": "Realizar migração para novo datacenter",
+      "status": "cancelled",
+      "priority": "high",
+      "createdAt": "2024-01-12T08:30:00Z",
+      "category": "Infraestrutura",
+      "tags": ["migration", "servers", "downtime"],
+      "isActive": false
+    },
+    {
+      "id": "g7h8i9j0-k1l2-3456-ghij-789012345678",
+      "title": "Otimizar performance do banco de dados",
+      "description": "Aplicar índices e otimizações nas queries",
+      "status": "completed",
+      "priority": "high",
+      "createdAt": "2024-01-14T13:20:00Z",
+      "category": "Otimização",
+      "tags": ["database", "performance", "sql"],
+      "isActive": true
+    },
+    {
+      "id": "h8i9j0k1-l2m3-4567-hijk-890123456789",
+      "title": "Implementar testes unitários",
+      "description": "Criar suite de testes para módulo de usuários",
+      "status": "pending",
+      "priority": "medium",
+      "createdAt": "2024-01-19T15:10:00Z",
+      "category": "Testes",
+      "tags": ["testing", "quality", "jest"],
+      "isActive": true
+    },
+    {
+      "id": "i9j0k1l2-m3n4-5678-ijkl-901234567890",
+      "title": "Configurar CI/CD pipeline",
+      "description": "Automatizar processo de deploy com GitHub Actions",
+      "status": "in_progress",
+      "priority": "urgent",
+      "createdAt": "2024-01-13T12:00:00Z",
+      "category": "DevOps",
+      "tags": ["ci/cd", "automation", "deploy"],
+      "isActive": true
+    },
+    {
+      "id": "j0k1l2m3-n4o5-6789-jklm-012345678901",
+      "title": "Refatorar código legado",
+      "description": "Melhorar estrutura e legibilidade do código antigo",
+      "status": "completed",
+      "priority": "low",
+      "createdAt": "2024-01-11T17:30:00Z",
+      "category": "Refatoração",
+      "tags": ["clean-code", "maintenance"],
+      "isActive": true
+    }
+  ]
+}
