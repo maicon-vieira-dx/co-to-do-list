@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer components {
+  .sidebar-home {
+    @apply !h-full flex-1 min-h-0;
+  }
+}

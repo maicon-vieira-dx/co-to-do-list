@@ -1,0 +1,38 @@
+<mat-drawer-container class="sidebar-home" autosize>
+  <mat-drawer #drawer class="sidebar" mode="side">
+    <div class="grid grid-cols-1 p-2">
+      <div class="col-span-1">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Pesquisar tarefas</mat-label>
+          <input matInput placeholder="Digite para pesquisar..." [value]="searchTerm()" (input)="onSearchChange($event)">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="max-h-[80%] p-2 overflow-y-auto">
+      <mat-nav-list>
+        @for (task of filteredTasks(); track task.id) {
+          <mat-list-item [activated]="task.isActive" (click)="taskStore.activate(task.id); $event.stopPropagation()">
+              @if(task.title.length > 40) {
+                {{ task.title.substring(0, 40) + "..." }}
+              } @else {
+                {{ task.title }}
+              }
+             <button matIconButton matListItemMeta (click)="$event.stopPropagation()">
+                <mat-icon matSuffix>{{ getIconStatus(task.status) }}</mat-icon>
+             </button>
+          </mat-list-item>
+        }
+      </mat-nav-list>
+    </div>
+  </mat-drawer>
+
+  <div class="sidenav-content flex flex-col justify-center items-center h-full">
+    <ng-content></ng-content>
+    <button mat-stroked-button color="primary" class="mt-2" (click)="drawer.toggle()">
+      <mat-icon matSuffix>@if(!drawer.opened) { visibility } @else { visibility_off }</mat-icon>
+      @if(!drawer.opened) { Visualizar } @else { Ocultar } todas
+    </button>
+  </div>
+
+</mat-drawer-container>

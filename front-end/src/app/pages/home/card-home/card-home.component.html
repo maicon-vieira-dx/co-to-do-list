@@ -1,0 +1,46 @@
+<mat-card>
+  <div class="flex !flex-row p-5 justify-center gap-2">
+    <div class="min-w-[40vw] min-h-[40vh]">
+      <mat-card class="card-home" appearance="outlined" class="!h-full justify-center">
+        <mat-card-header >
+          <mat-icon class="absolute top-3 left-3">{{ getStatusIcon(taskStore.taskSelected()?.status) }}</mat-icon>
+          <mat-icon class="absolute top-3 right-3" [style]="{ color: getPriorityColor(taskStore.taskSelected()?.priority) }">bookmark</mat-icon>
+          <mat-card-title class="!font-medium !text-2xl">{{ taskStore.taskSelected()?.title }}</mat-card-title>
+          <mat-card-subtitle class="!font-light !text-gray-500 italic">~ {{ taskStore.taskSelected()?.category }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="text-lg">{{ taskStore.taskSelected()?.description }}</p>
+        </mat-card-content>
+        <mat-card-footer class="example-card-footer">
+          <mat-chip-set>
+            @for(tag of taskStore.taskSelected()?.tags; track tag) {
+              <mat-chip>{{ tag }}</mat-chip>
+            }
+          </mat-chip-set>
+        </mat-card-footer>
+        <div class="absolute bottom-3 right-3">
+          <button mat-stroked-button class="m-2 !text-white" type="button" (click)="router.navigate(['/editar'])" mat-raised-button>
+            Editar
+            <mat-icon matSuffix>edit</mat-icon>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+    <div class="flex-grow">
+      <mat-list role="list" class="!rounded-lg !border-[1px] border-white/30 m-0 !p-2 overflow-y-auto">
+        <p class="text-xs text-white/60">Adicionadas recentemente: </p>
+        @for(task of latestTasks(); track task.id) {
+        <mat-list-item role="listitem" class="!bg-black !border-[1px] border-white/30 !rounded-lg my-1 m-0"
+          (click)="taskStore.activate(task.id)" *ngIf="taskStore.taskSelected() != task">
+          <mat-icon class="pt-1 opacity-40" [style]="{ color: getPriorityColor(task.priority) }">bookmark</mat-icon>
+          @if(task.title.length > 20) {
+            {{ task.title.substring(0, 20) + "..." }}
+          } @else {
+            {{ task.title }}
+          }
+        </mat-list-item>
+        }
+      </mat-list>
+    </div>
+  </div>
+</mat-card>

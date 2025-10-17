@@ -19,7 +19,7 @@ export interface Item {
   status: Status;
   priority: Priority;
   createdAt: Date;
-  dueDate?: Date;
   category?: string;
   tags: string[];
+  isActive: boolean;
 }
