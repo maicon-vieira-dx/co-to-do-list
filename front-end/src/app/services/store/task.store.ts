@@ -24,6 +24,17 @@ export class TaskStore {
     });
   }
 
+  async readById(id: string | null) {
+    try {
+      const response = await firstValueFrom(this.taskService.getById(id));
+      this.read(true);
+      return response;
+    } catch (error) {
+      console.error('Erro ao criar tarefa:', error);
+      throw error;
+    }
+  }
+
   read(force: boolean = false) {
     if (this._loaded() && !force) return;
     this.taskService.get().subscribe({
