@@ -26,10 +26,10 @@ export class EditarComponent {
     this.form = this.createForm();
     this.route.queryParamMap.subscribe(params => {
       this.taskStore.readById(params?.get("id"))
-      .then(({ title, status, description, priority, category, tags = [] }) => {
-        this.form.patchValue({ title, status, description, priority, category, tags });
+      .then(({ tags, ...task }) => {
+        this.form.patchValue(task);
         tags.forEach((tag: string) => {
-          (this.form.get('tags') as FormArray).push(this.fb.control(tag, [Validators.maxLength(30)]));
+          (this.form.get('tags') as FormArray).push(this.fb.control(tag));
         });
       });
     });
