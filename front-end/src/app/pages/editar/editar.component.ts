@@ -1,6 +1,6 @@
 import { Component, signal, WritableSignal } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { HeaderComponent } from '@app/components/header/header.component';
 import { SidebarComponent } from '@app/components/sidebar/sidebar.component';
 import { TaskFormComponent } from '@app/components/task-form/task-form.component';
@@ -18,21 +18,22 @@ import { ToastrService } from 'ngx-toastr';
 export class EditarComponent {
   protected form!: FormGroup;
   protected errors: WritableSignal<ApiResponse["errors"]> = signal([]);
-  protected task = signal<Task | null>(null);
+  protected id = signal<Task["id"]>("");
 
   constructor(private fb: FormBuilder, private router: Router, private toastr: ToastrService, private taskStore: TaskStore, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.form = this.createForm();
     this.route.queryParamMap.subscribe(params => {
-      this.taskStore.readById(params?.get("id"))
-      .then(({ tags, ...task }) => {
+      const id = params?.get("id");
+      id != null && id != 'null' ? this.taskStore.readById(params?.get("id")).then(({ tags = [], id, ...task}: Task) => {
         this.form.patchValue(task);
-        tags.forEach((tag: string) => {
-          (this.form.get('tags') as FormArray).push(this.fb.control(tag));
-        });
-      });
-    });
+        this.id.set(id);
+        const tagsArray = this.form.get('tags') as FormArray;
+        tagsArray.clear();
+        (tags || []).forEach(tag => tagsArray?.push(this.fb.control(tag)));
+      }) : this.router.navigate(["/"])
+  });
   };
 
   private createForm(): FormGroup {
@@ -47,13 +48,13 @@ export class EditarComponent {
   };
 
   protected onSubmit() {
-    this.taskStore.update(this.form.value, this.task()?.id)
+    this.taskStore.update(this.form.value, this.id())
       .then(({ message }) => this.toastr.success(message) && (this.form.reset(), this.router.navigate(['/'])))
       .catch(({ error: { errors, message }}) => this.toastr.error(message) && this.errors.set(errors));
   };
 
   protected onDelete = () => {
-    this.taskStore.delete(this.task()?.id)
+    this.taskStore.delete(this.id())
       .then(({ message }) => this.toastr.success(message) && (this.form.reset(), this.router.navigate(['/'])))
       .catch(({ error: { errors, message }}) => this.toastr.error(message) && this.errors.set(errors));
   };
