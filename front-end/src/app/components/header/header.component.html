@@ -9,22 +9,15 @@
 
   <!-- Navegação -->
   <nav class="nav-links">
-    @for(link of navLinks; track link){
-      <a mat-button [routerLink]="link.path" [class.active]="isActiveRoute(link.path)" routerLinkActive="active-link">
-        <mat-icon class="nav-icon mb-2" matSuffix>{{link.icon}}</mat-icon>
-        {{link.label}}
-      </a>
+    @for(link of navLinks(); track link){
+      <a mat-button
+       [routerLink]="link.path"
+       [queryParams]="link.queryParams || null"
+       [class.active]="isActiveRoute(link.path)"
+       routerLinkActive="active-link">
+      <mat-icon class="nav-icon mb-2" matSuffix>{{link.icon}}</mat-icon>
+      {{link.label}}
+    </a>
     }
   </nav>
-
-  <div class="header-info">
-    <div class="tasks-stats">
-      <div class="flex gap-4">
-        <!-- Pendentes -->
-        <mat-icon class="stat-icon pending" [matBadge]="taskStats().pending" matBadgeColor="warn" matBadgePosition="above after" aria-hidden="false">schedule</mat-icon>
-        <!-- Concluídas -->
-        <mat-icon class="stat-icon pending" [matBadge]="taskStats().completed" matBadgeColor="warn" matBadgePosition="above after" aria-hidden="false">check_circle</mat-icon>
-      </div>
-    </div>
-  </div>
 </mat-toolbar>
