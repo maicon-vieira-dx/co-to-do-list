@@ -17,19 +17,18 @@
             <mat-form-field appearance="outline">
               <mat-label>Tags</mat-label>
               <mat-chip-grid #chipGrid aria-label="Tags">
-                @for (tag of tags(); track tag.id) {
-                <mat-chip-row (removed)="removeTag(tag.id)" [aria-description]="'press enter to edit ' + tag.name">
-                  {{tag.name}}
-                  <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
-                    <mat-icon matSuffix>cancel</mat-icon>
-                  </button>
-                </mat-chip-row>
+                @for (tag of tags.controls; let i = $index; track i) {
+                  <mat-chip-row (removed)="removeTag(i)">
+                    {{ tag.value }}
+                    <button matChipRemove aria-label="Remover tag">
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip-row>
                 }
-                <input matInput [placeholder]="'Tag: '+ tags().length + '/3' " formControlName="tags"
-                  [matChipInputFor]="chipGrid" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                  [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addTag($event)" />
-                  <mat-error>{{ getError("tags") }}</mat-error>
+                <input matInput placeholder="Adicionar tag" [matChipInputFor]="chipGrid" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addTag($event)" />
               </mat-chip-grid>
+              <mat-hint align="end">{{ tags.length }}/3</mat-hint>
+              <mat-error>{{ getError('tags') }}</mat-error>
             </mat-form-field>
           </div>
         </div>

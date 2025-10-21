@@ -34,7 +34,7 @@ export class CriarComponent {
       description: ["", [Validators.required, Validators.maxLength(255), Validators.minLength(10)]],
       priority: ["", [Validators.required, Validators.maxLength(20)]],
       category: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(2)]],
-      tags: [[]],
+      tags: this.fb.array([]),
     });
   }
 

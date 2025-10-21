@@ -19,7 +19,7 @@
           </mat-chip-set>
         </mat-card-footer>
         <div class="absolute bottom-3 right-3">
-          <button mat-stroked-button class="m-2 !text-white" type="button" (click)="router.navigate(['/editar'])" mat-raised-button>
+          <button mat-stroked-button class="m-2 !text-white" type="button" (click)="router.navigateByUrl(`/editar?id=${taskStore.taskSelected()?.id}`)" mat-raised-button>
             Editar
             <mat-icon matSuffix>edit</mat-icon>
           </button>
